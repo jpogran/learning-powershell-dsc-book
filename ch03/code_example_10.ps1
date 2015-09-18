@@ -25,7 +25,7 @@ Configuration InstallExampleSoftware
     {
       Name               = $Node.ExampleSoftware.Name
       ProductId          = $Node.ExampleSoftware.ProductId
-      Path               = $Node.ExampleSoftware.Source
+      Path               = $Node.ExampleSoftware.SourcePath
       ConfigFile         = $Node.ExampleSoftware.ConfigFile
       ConfigFileContents = $ConfigurationData.NonNodeData.ConfigFileContents
     }

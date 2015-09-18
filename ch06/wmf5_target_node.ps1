@@ -7,7 +7,7 @@
 [CmdletBinding()]
 param(
   $configData,
-  $outputPath = ([IO.Path]::Combine($PSScriptRoot, 'WMF5PullServer'))
+  $outputPath = ([IO.Path]::Combine($PSScriptRoot, 'WMF5TargetNodeLCM'))
 )
 
 [DscLocalConfigurationManager()]

@@ -4,4 +4,3 @@ $configData = &$dataScript
 
 C:\vagrant\book\ch06\wmf5_target_node.ps1 -configdata $configData -output $outputPath
 Set-DscLocalConfigurationManager -Path $outputPath -Verbose
-  

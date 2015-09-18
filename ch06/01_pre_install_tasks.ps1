@@ -3,9 +3,16 @@
 Install-Package -Name 'xWebAdministration' -RequiredVersion 1.7.0.0 -Force -ForceBootStrap
 Install-Package -Name 'xPSDesiredStateConfiguration' -RequiredVersion 3.4.0.0 -Force -ForceBootStrap
 
+## this is only needed to compile the MOF on the pullserver, our chosen authoring station
+Write-Warning "Copy 'xWebAdministration' Version 1.7.0.0 to c:\modules and to `$env:ProgramFiles\WindowsPowerShell\Modules"
+Write-Warning "Copy 'xPSDesiredStateConfiguration' Version 3.4.0.0 c:\modules and to `$env:ProgramFiles\WindowsPowerShell\Modules"
+
 ## this is only needed if you don't already have your DSC Resources packaged
 . c:\vagrant\book\ch06\dsctooling.ps1
-if(-not(Test-Path 'c:\modules')){ mkdir 'c:\modules' }
+if(-not(Test-Path 'c:\modules')){
+  mkdir 'c:\modules'
+  Write-Error "You must download $([string]::join(' and', $modules)) to your working directory to package them up in this step here"
+}
 $modules = @('xWebAdministration','xPSDesiredStateConfiguration')
 $modules | % {
   New-DscResourceArchive -ModulePath (Join-Path 'C:\vagrant' $_) -Destinationpath (Join-Path 'c:\modules' $_) -Force

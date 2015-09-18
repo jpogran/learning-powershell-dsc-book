@@ -7,10 +7,10 @@
 [CmdletBinding()]
 param(
   $configData,
-  $outputPath = ([IO.Path]::Combine($PSScriptRoot, 'WMF5PullServer'))
+  $outputPath = ([IO.Path]::Combine($PSScriptRoot, 'WMF4PullServer'))
 )
 
-Configuration WMF5PullServer
+Configuration WMF4PullServer
 {
   Import-DSCResource -ModuleName xPSDesiredStateConfiguration
 
@@ -22,14 +22,6 @@ Configuration WMF5PullServer
       Name   = 'DSC-Service'
     }
 
-    File RegistrationKeyFile
-    {
-      Ensure          = 'Present'
-      DestinationPath = (Join-Path $Node.RegistrationKeyPath $Node.RegistrationKeyFile)
-      Contents        = $Node.RegistrationKey
-      DependsOn       = @("[WindowsFeature]DSCServiceFeature")
-    }
-
     xDscWebService PSDSCPullServer
     {
       Ensure                       = "Present"
@@ -39,7 +31,6 @@ Configuration WMF5PullServer
       CertificateThumbPrint        = $Node.CertificateThumbPrint
       ModulePath                   = $Node.ModulePath
       ConfigurationPath            = $Node.ConfigurationPath
-      RegistrationKeyPath          = $Node.RegistrationKeyPath
       AcceptSelfSignedCertificates = $true
       State                        = "Started"
       DependsOn                    = @("[WindowsFeature]DSCServiceFeature","[File]RegistrationKeyFile")
@@ -69,4 +60,4 @@ Configuration WMF5PullServer
   }
 }
 
-WMF5PullServer -ConfigurationData $configData -OutputPath $outputPath
+WMF4PullServer -ConfigurationData $configData -OutputPath $outputPath

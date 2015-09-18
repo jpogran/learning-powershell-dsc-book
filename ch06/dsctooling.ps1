@@ -79,3 +79,27 @@ function New-ZipFile
 
   Write-Verbose "Created $DestinationPath"
 }
+
+function Get-DscPullServerInformation
+{
+  [CmdletBinding()]
+  Param (
+    [string] $Uri = "http://localhost:9080/PSDSCComplianceServer.svc/Status"
+  )
+  Write-Verbose "Querying node information from pull server URI  = $Uri"
+
+  $invokeParams = @{
+    Uri                   = $Uri
+    Method                = "Get"
+    ContentType           = 'application/json'
+    UseDefaultCredentials = $true
+    Headers               = @{Accept = 'application/json'}
+  }
+  $response = Invoke-WebRequest @invokeParams
+
+  if($response.StatusCode -ne 200){
+    throw "Could not access $uri"
+  }
+
+  ConvertFrom-Json $response.Content
+}

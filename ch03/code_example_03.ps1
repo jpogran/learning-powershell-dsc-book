@@ -19,7 +19,7 @@ Configuration InstallExampleSoftware
       Ensure    = "Present"
       Name      = $Node.ExampleSoftware.Name
       ProductId = $Node.ExampleSoftware.ProductId
-      Path      = $Node.ExampleSoftware.Path
+      Path      = $Node.ExampleSoftware.SourcePath
       DependsOn = @('[WindowsFeature]DotNet')
     }
   }

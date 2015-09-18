@@ -75,7 +75,7 @@ Configuration InstallExampleSoftware
       Ensure    = 'Present'
       Name      = $Node.RealStuffSoftware.Name
       ProductId = $Node.RealStuffSoftware.ProductId
-      Path      = $Node.RealStuffSoftware.Source
+      Path      = $Node.RealStuffSoftware.SourcePath
       DependsOn = @('[WindowsFeature]IIS', '[WindowsFeature]AspNet')
     }
   }

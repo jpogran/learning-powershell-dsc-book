@@ -77,7 +77,7 @@ Configuration PantheonDeployment
       Ensure    = 'Present'
       Name      = $Node.Apollo.Name
       ProductId = $Node.Apollo.ProductId
-      Path      = $Node.Apollo.Source
+      Path      = $Node.Apollo.SourcePath
       Arguments = $Node.Apollo.Arguments
     }
 
