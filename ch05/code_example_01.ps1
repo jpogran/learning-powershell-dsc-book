@@ -12,4 +12,5 @@ Configuration SetupAllTheThings
   }
 }
 
-SetupAllTheThings -OutputPath ([IO.Path]::Combine($PSScriptRoot, "SetupAllTheThings"))
+$mofPath = [IO.Path]::Combine($PSScriptRoot, "SetupAllTheThings")
+SetupAllTheThings -OutputPath $mofPath

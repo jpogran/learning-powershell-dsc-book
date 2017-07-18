@@ -1,17 +1,24 @@
+###begin script###
+$data = @{
+  AllNodes = @(
+    @{ NodeName = 'localhost' },
+    @{ NodeName = '192.168.0.13' }
+  )
+}
+
 Configuration SetupAllTheThings
 {
-  Import-DscResource -Module PSDesiredStateConfiguration
-  Node ($AllNodes).NodeName
+  Node $AllNodes.NodeName
   {
     File CreateFile
     {
-      Ensure          = 'Present'
-      DestinationPath = 'c:\test.txt'
-      Contents        = 'Wakka'
+      Ensure          = "Present"
+      DestinationPath = "c:\test.txt"
+      Contents        = "Wakka"
     }
   }
 }
 
-$dataFile   = [IO.Path]::Combine($PSScriptRoot, 'data_example_01.psd1')
-$OutputPath = [IO.Path]::Combine($PSScriptRoot, 'SetupAllTheThings')
-SetupAllTheThings -ConfigurationData $dataFile -OutputPath $OutputPath
+[IO.Path]::Combine($PSScriptRoot, "SetupAllTheThings")
+SetupAllTheThings -ConfiurationData $data -OutputPath $mofPath
+###end script###
