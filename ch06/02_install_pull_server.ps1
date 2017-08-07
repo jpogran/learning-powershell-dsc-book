@@ -5,10 +5,10 @@
 ##
 ############################################################################################
 
-$dataScript = ([IO.Path]::Combine($PSScriptRoot, 'wmf5_config_data.ps1'))
+$outputPath = ([IO.Path]::Combine($PSScriptRoot, 'HTTPSPullServer'))
+$dataScript = ([IO.Path]::Combine($PSScriptRoot, 'https_config_data.ps1'))
 $configData = &$dataScript
 
-c:\vagrant\book\ch06\wmf5_pull_server.ps1 -OutputPath ([IO.Path]::Combine($PSScriptRoot, 'WMF5PullServer')) -ConfigData $configData
-
-Start-DscConfiguration -Path ([IO.Path]::Combine($PSScriptRoot, 'WMF5PullServer')) -Wait -Verbose -Force
+.\https_pull_server.ps1 -OutputPath $outputPath -ConfigData $configData
+Start-DscConfiguration -Path $outputPath -Wait -Verbose -Force
 
