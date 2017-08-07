@@ -7,10 +7,10 @@
 [CmdletBinding()]
 param(
   $configData,
-  $outputPath = ([IO.Path]::Combine($PSScriptRoot, 'WMF5PullServer'))
+  $outputPath = ([IO.Path]::Combine($PSScriptRoot, 'HTTPSPullServer'))
 )
 
-Configuration WMF5PullServer
+Configuration HTTPSPullServer
 {
   Import-DSCResource -ModuleName xPSDesiredStateConfiguration
 
@@ -69,4 +69,4 @@ Configuration WMF5PullServer
   }
 }
 
-WMF5PullServer -ConfigurationData $configData -OutputPath $outputPath
+HTTPSPullServer -ConfigurationData $configData -OutputPath $outputPath

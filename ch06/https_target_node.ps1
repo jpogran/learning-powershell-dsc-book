@@ -7,11 +7,11 @@
 [CmdletBinding()]
 param(
   $configData,
-  $outputPath = ([IO.Path]::Combine($PSScriptRoot, 'WMF5TargetNodeLCM'))
+  $outputPath = ([IO.Path]::Combine($PSScriptRoot, 'HTTPSTargetNodeLCM'))
 )
 
 [DscLocalConfigurationManager()]
-Configuration WMF5TargetNodeLCM
+Configuration HTTPSTargetNodeLCM
 {
   Node $AllNodes.Where({ $_.Roles -contains 'Target'}).NodeName
   {
@@ -42,4 +42,4 @@ Configuration WMF5TargetNodeLCM
   }
 }
 
-WMF5TargetNodeLCM -ConfigurationData $configData -OutputPath $outputPath
+HTTPSTargetNodeLCM -ConfigurationData $configData -OutputPath $outputPath
