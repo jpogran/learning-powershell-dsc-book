@@ -41,30 +41,9 @@ Configuration HTTPSPullServer
       ConfigurationPath            = $Node.ConfigurationPath
       RegistrationKeyPath          = $Node.RegistrationKeyPath
       AcceptSelfSignedCertificates = $true
+      UseSecurityBestPractices     = $true
       State                        = "Started"
       DependsOn                    = @("[WindowsFeature]DSCServiceFeature","[File]RegistrationKeyFile")
-    }
-
-    xDscWebService PSDSCComplianceServer
-    {
-      Ensure                = "Present"
-      EndpointName          = $Node.ComplianceServerEndpointName
-      Port                  = $Node.ComplianceServerPort
-      PhysicalPath          = $Node.CompliancePhysicalPath
-      CertificateThumbPrint = "AllowUnencryptedTraffic"
-      IsComplianceServer    = $true
-      State                 = "Started"
-      DependsOn             = @("[WindowsFeature]DSCServiceFeature")
-    }
-
-    File CopyPackagedModules
-    {
-      Ensure          = "Present"
-      Type            = "Directory"
-      SourcePath      = $Node.PackagedModulePath
-      DestinationPath = $Node.ModulePath
-      Recurse         = $true
-      DependsOn       = "[xDscWebService]PSDSCPullServer"
     }
   }
 }

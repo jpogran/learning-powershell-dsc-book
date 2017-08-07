@@ -34,10 +34,7 @@ Configuration HTTPSTargetNodeLCM
 
     ReportServerWeb ReportManager
     {
-      ServerURL               = $Node.ComplianceServerURL
-      RegistrationKey         = $Node.RegistrationKey
-      CertificateID           = $Node.CertificateID
-      AllowUnsecureConnection = $true
+      ServerURL               = $Node.ConfigurationServerURL
     }
   }
 }

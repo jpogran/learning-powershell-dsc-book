@@ -5,9 +5,7 @@ $configData = @{
     @{
       NodeName               = "*"
       RegistrationKey        = 'c4729623-1eb7-408a-b3f4-fbddcc63e703'
-      PackagedModulePath     = 'c:\Modules'
       ConfigurationServerURL = "https://dsc-box1:8080/PSDSCPullServer.svc"
-      ComplianceServerURL    = "http://dsc-box1:9080/PSDSCComplianceServer.svc"
       CertificateID          = "$($cert.ThumbPrint)"
       RefreshMode            = "PULL"
       ConfigurationMode      = "ApplyAndAutocorrect"
@@ -26,14 +24,10 @@ $configData = @{
       PullServerEndpointName       = 'PSDSCPullServer'
       PullServerPhysicalPath       = "$env:SystemDrive\inetpub\PSDSCPullServer"
       PullServerPort               = 8080
-      ComplianceServerEndpointName = 'PSDSCComplianceServer'
-      CompliancePhysicalPath       = "$env:SystemDrive\inetpub\PSDSCComplianceServer"
-      ComplianceServerPort         = 9080
     },
     @{
       NodeName        = 'dsc-box2'
       Roles           = @('Target')
-      ConfigurationId = 'c19fbe22-b664-4a8a-a2a1-477f16ce9659'
       WebSiteFolder   = 'C:\testsite'
       IndexFile       = 'C:\testsite\index.html'
       WebSiteName     = 'TestSite'

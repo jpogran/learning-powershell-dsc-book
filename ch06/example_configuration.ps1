@@ -71,4 +71,4 @@ Configuration SetupTheSite
   }
 }
 
-SetupTheSite -OutputPath ([IO.Path]::Combine($PSScriptRoot, 'SetupTheSite')) -ConfigurationData $configData
+SetupTheSite -OutputPath $outputPath -ConfigurationData $configData

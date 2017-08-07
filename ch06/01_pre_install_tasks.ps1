@@ -40,7 +40,7 @@ Invoke-Command -ComputerName 'dsc-box2' -Scriptblock {
   Set-Item -Path WSMan:\localhost\Client\TrustedHosts -Value * -Force
   Import-Certificate -FilePath "C:\vagrant\servercert.cer" -CertStoreLocation Cert:\LocalMachine\Root
   if(-not (Select-String -Path "C:\Windows\System32\drivers\etc\hosts" -Pattern "192.168.50.2")){
-    Add-Content -Path C:\Windows\System32\drivers\etc\hosts -Value "`n192.168.0.12`tdsc-box1"
+    Add-Content -Path C:\Windows\System32\drivers\etc\hosts -Value "`n192.168.50.2`tdsc-box1"
     Add-Content -Path C:\Windows\System32\drivers\etc\hosts -Value "`n1192.168.50.4`tdsc-box2"
   }
 }
