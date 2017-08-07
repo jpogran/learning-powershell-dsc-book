@@ -3,5 +3,7 @@ ehthumbs.db
 Desktop.ini
 $RECYCLE.BIN/
 .DS_Store
+.vagrant
+servercert.cer
 
 *.mof
