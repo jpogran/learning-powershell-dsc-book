@@ -1,13 +1,13 @@
 # Learning PowerShell DSC Book
 
-Sample Code included in the `Learning PowerShell DSC Book` by James Pogran, published in Oct 2015 by Packt Publishing.
+Sample Code included in the `Learning PowerShell DSC Book - Second Edition` by James Pogran, published in Sept 2017 by Packt Publishing.
 
 - Packt Publishing book page
 - Author's website
 
 ## Version
 
-The master branch currently matches the examples seen in the first edition of the book.
+The master branch currently matches the examples seen in the second edition of the book.
 
 ## Using the Code
 
